@@ -41,9 +41,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
 $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-$(LOCAL_PATH)/audio/mixer_paths0.xml:system/etc/mixer_paths.xml \
-$(LOCAL_PATH)/audio/mixer_paths1.xml:system/etc/mixer_paths.xml \
-$(LOCAL_PATH)/audio/mixer_paths2.xml:system/etc/mixer_paths.xml
+$(LOCAL_PATH)/audio/mixer_paths0.xml:system/etc/mixer_paths0.xml \
+$(LOCAL_PATH)/audio/mixer_paths1.xml:system/etc/mixer_paths1.xml \
+$(LOCAL_PATH)/audio/mixer_paths2.xml:system/etc/mixer_paths2.xml
 
 # Camera
 PRODUCT_PACKAGES += \
