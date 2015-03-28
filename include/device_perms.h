@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 The CyanogenMod Project
+ * Copyright (C) 2012 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,18 +14,11 @@
  * limitations under the License.
  */
 
-#ifndef _BDROID_BUILDCFG_H
-#define _BDROID_BUILDCFG_H
+#ifndef DEVICE_PERMS_H
+#define DEVICE_PERMS_H
 
-#define BTM_DEF_LOCAL_NAME   "Xiaomi HM_NOTE_1LTE"
-
-#define BLUETOOTH_QCOM_SW TRUE
-
-// Disables read remote device feature
-#define BTA_SKIP_BLE_READ_REMOTE_FEAT TRUE
-#define MAX_L2CAP_CHANNELS    14
-// skips conn update at conn completion
-#define BTA_BLE_SKIP_CONN_UPD  TRUE
-// Enables interleaved scan
-#define BTA_HOST_INTERLEAVE_SEARCH TRUE
-#endif
+#define PROPERTY_PERMS_APPEND \
+    { "persist.audio.",   AID_SYSTEM,   0 }, \
+    { "persist.sys.camera.", AID_MEDIA, 0 }, \
+	
+#endif /* DEVICE_PERMS_H */
