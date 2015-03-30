@@ -26,9 +26,11 @@ TARGET_CPU_SMP := true
 
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
+# Flags
+COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
 # Kernel
-TARGET_KERNEL_CONFIG := msm8226-perf_defconfig
+TARGET_KERNEL_CONFIG := dior_debug_defconfig
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 earlyprintk androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -54,6 +56,10 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 6241112064 #6G
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_FLASH_BLOCK_SIZE := 131072
 
+BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
+BOARD_VOLD_MAX_PARTITIONS := 29
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
+
 
 # QCOM HW
 BOARD_USES_QCOM_HARDWARE 	:= true
@@ -61,7 +67,11 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 TARGET_QCOM_AUDIO_VARIANT := caf
 TARGET_QCOM_DISPLAY_VARIANT := caf-new
 TARGET_QCOM_MEDIA_VARIANT := caf-new
-TARGET_USES_QCOM_BSP := true
+#TARGET_USES_QCOM_BSP := true
+
+# Audio
+AUDIO_FEATURE_DISABLED_MULTI_VOICE_SESSIONS := true
+BOARD_USES_ALSA_AUDIO := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -73,12 +83,32 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/xiaomi/dior/bluetooth
 COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{"xiaomi.camera.sensor.", AID_CAMERA, 0}, {"camera.4k2k.", AID_MEDIA, 0}, {"persist.camera.", AID_MEDIA, 0},'
 USE_DEVICE_SPECIFIC_CAMERA := true
 
+# Charge mode
+BOARD_CHARGING_MODE_BOOTING_LPM := /sys/xiaomi_lpm/lpm_mode
+
 # Graphics
 TARGET_USES_ION := true
 TARGET_USES_C2D_COMPOSITION := true
 USE_OPENGL_RENDERER := true
+HAVE_ADRENO_SOURCE			:= false
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 BOARD_EGL_CFG := device/xiaomi/dior/configs/egl.cfg
+
+# Shader cache config options
+# Maximum size of the  GLES Shaders that can be cached for reuse.
+# Increase the size if shaders of size greater than 12KB are used.
+MAX_EGL_CACHE_KEY_SIZE := 12*1024
+
+# Maximum GLES shader cache size for each app to store the compiled shader
+# binaries. Decrease the size if RAM or Flash Storage size is a limitation
+# of the device.
+MAX_EGL_CACHE_SIZE := 1024*1024
+
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+
+TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+
+TARGET_DISPLAY_INSECURE_MM_HEAP := true
 
 # Backlight
 TARGET_PROVIDES_LIBLIGHT := true
@@ -91,10 +121,12 @@ TARGET_POWERHAL_VARIANT := qcom
 
 # QC Time
 BOARD_USES_QC_TIME_SERVICES := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE 
-TARGET_USES_QCOM_BSP := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
+# COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
 BOARD_HAS_NO_SELECT_BUTTON := true
+
+# RPC
+TARGET_NO_RPC := true
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
@@ -134,9 +166,6 @@ BOARD_SEPOLICY_UNION += \
     wpa_socket.te \
     wpa.te
 
-# Vendor Init
-# TARGET_UNIFIED_DEVICE := true
-
 # Webkit
 ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
@@ -154,3 +183,18 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 BOARD_TOUCH_RECOVERY := true
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
+
+# Init
+TARGET_NO_INITLOGO := true
+
+# Vendor Init
+#TARGET_UNIFIED_DEVICE := true
+TARGET_INIT_VENDOR_LIB := libinit_dior
+TARGET_LIBINIT_DEFINES_FILE := device/xiaomi/dior/init/init_dior.c
+
+# Webkit
+ENABLE_WEBGL := true
+TARGET_FORCE_CPU_UPLOAD := true
+
+# Hardware
+BOARD_HARDWARE_CLASS := device/xiaomi/dior/cmhw
