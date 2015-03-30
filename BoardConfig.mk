@@ -140,6 +140,9 @@ TARGET_USES_WCNSS_CTRL := true
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_AP := "ap"
 
+# Custom gps.conf
+#TARGET_USES_CUSTOM_GPS_CONF := true
+
 # SELinux
 BOARD_SEPOLICY_DIRS += \
     device/xiaomi/dior/sepolicy

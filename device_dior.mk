@@ -40,8 +40,15 @@ PRODUCT_PACKAGES += \
     libaudioamp
 
 # Audio configuration
+#Comment out audio_effects.conf because it is already present in vendor tree(and that one is larger, so likely better) but I'll leave the file in audio/ in case anyone wants it(just uncomment the lines below WITH audio_effects.conf and comment out the lines WITHOUT)
+#PRODUCT_COPY_FILES += \
+#$(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+#$(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
+#$(LOCAL_PATH)/audio/mixer_paths0.xml:system/etc/mixer_paths0.xml \
+#$(LOCAL_PATH)/audio/mixer_paths1.xml:system/etc/mixer_paths1.xml \
+#$(LOCAL_PATH)/audio/mixer_paths2.xml:system/etc/mixer_paths2.xml
+
 PRODUCT_COPY_FILES += \
-$(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
 $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
 $(LOCAL_PATH)/audio/mixer_paths0.xml:system/etc/mixer_paths0.xml \
 $(LOCAL_PATH)/audio/mixer_paths1.xml:system/etc/mixer_paths1.xml \
