@@ -56,11 +56,11 @@ void vendor_load_properties()
         return;
 
 	gsm_properties("9");
-	property_set("ro.build.fingerprint", "xiaomi/xiaomi_asia_wwe/xiaomi_diorul:4.4.2/KOT49H/358649.1:user/release-keys");
-	property_set("ro.build.description", "1.49.707.1 CL358649 release-keys");
+	property_set("ro.build.fingerprint", "xiaomi/xiaomi_dior/dior:5.0.2/LRX22G/358649.1:user/test-keys");
+	property_set("ro.build.description", "1.49.707.1 CL358649 test-keys");
 	property_set("ro.product.model", "Xiaomi Note 4G");
-	property_set("ro.product.device", "diorul");
-	property_set("ro.build.product", "diorul");
+	property_set("ro.product.device", "dior");
+	property_set("ro.build.product", "dior");
 	property_set("ro.ril.hsdpa.category", "14");
 	property_set("ro.ril.air.enabled", "1");
 	property_set("ro.ril.enable.dior3", "1");

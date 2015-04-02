@@ -22,6 +22,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := cortex-a7
 TARGET_CPU_SMP := true
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 # TARGET_KERNEL_CONFIG := cm_dior_defconfig
 
 ARCH_ARM_HAVE_TLS_REGISTER := true
@@ -31,7 +32,8 @@ COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
 # Kernel
 TARGET_KERNEL_CONFIG := dior_debug_defconfig
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 earlyprintk androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37
+#BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 earlyprintk androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 earlyprintk androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
@@ -63,15 +65,21 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/
 
 # QCOM HW
 BOARD_USES_QCOM_HARDWARE 	:= true
+USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY:= true
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-TARGET_QCOM_AUDIO_VARIANT := caf
-TARGET_QCOM_DISPLAY_VARIANT := caf-new
-TARGET_QCOM_MEDIA_VARIANT := caf-new
+#TARGET_QCOM_AUDIO_VARIANT := caf
+#TARGET_QCOM_DISPLAY_VARIANT := caf-new
+#TARGET_QCOM_MEDIA_VARIANT := caf-new
 #TARGET_USES_QCOM_BSP := true
 
 # Audio
 AUDIO_FEATURE_DISABLED_MULTI_VOICE_SESSIONS := true
 BOARD_USES_ALSA_AUDIO := true
+AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
+AUDIO_FEATURE_ENABLED_HWDEP_CAL := true
+AUDIO_FEATURE_ENABLED_LOW_LATENCY_CAPTURE := true
+AUDIO_FEATURE_ENABLED_FM := true
+BOARD_AUDIO_AMPLIFIER := device/xiaomi/dior/libaudioamp
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -80,8 +88,18 @@ BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/xiaomi/dior/bluetooth
 
 # Camera
-COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{"xiaomi.camera.sensor.", AID_CAMERA, 0}, {"camera.4k2k.", AID_MEDIA, 0}, {"persist.camera.", AID_MEDIA, 0},'
+#COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{"xiaomi.camera.sensor.", AID_CAMERA, 0}, {"camera.4k2k.", AID_MEDIA, 0}, {"persist.camera.", AID_MEDIA, 0},'
 USE_DEVICE_SPECIFIC_CAMERA := true
+
+# Dex
+ifeq ($(HOST_OS),linux)
+  ifeq ($(TARGET_BUILD_VARIANT),user)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+    endif
+  endif
+endif
+DONT_DEXPREOPT_PREBUILTS := true
 
 # Charge mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/xiaomi_lpm/lpm_mode
@@ -94,21 +112,12 @@ HAVE_ADRENO_SOURCE			:= false
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 BOARD_EGL_CFG := device/xiaomi/dior/configs/egl.cfg
 
-# Shader cache config options
-# Maximum size of the  GLES Shaders that can be cached for reuse.
-# Increase the size if shaders of size greater than 12KB are used.
-MAX_EGL_CACHE_KEY_SIZE := 12*1024
+# Fonts
+EXTENDED_FONT_FOOTPRINT := true
 
-# Maximum GLES shader cache size for each app to store the compiled shader
-# binaries. Decrease the size if RAM or Flash Storage size is a limitation
-# of the device.
-MAX_EGL_CACHE_SIZE := 1024*1024
-
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-
-TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
-
-TARGET_DISPLAY_INSECURE_MM_HEAP := true
+# GPS
+TARGET_GPS_HAL_PATH := device/xiaomi/dior/gps
+TARGET_PROVIDES_GPS_LOC_API := true
 
 # Backlight
 TARGET_PROVIDES_LIBLIGHT := true
@@ -148,6 +157,7 @@ BOARD_SEPOLICY_DIRS += \
     device/xiaomi/dior/sepolicy
 
 BOARD_SEPOLICY_UNION += \
+    akmd.te \
     app.te \
     bluetooth.te \
     device.te \
@@ -159,13 +169,24 @@ BOARD_SEPOLICY_UNION += \
     healthd.te \
     init_shell.te \
     init.te \
+    kcal_dev.te \
+    kernel.te \
     keystore.te \
     kickstart.te \
     mediaserver.te \
+    mm-qcamerad.te \
+    mpdecision.te \
+    platform_app.te \
+    property_contexts \
+    recovery.te \
     rild.te \
+    rmt_storage.te \
     surfaceflinger.te \
-    system.te \
+    system_app.te \
+    thermal-engine.te \
     ueventd.te \
+    vibe_dev.te \
+    vold.te \
     wpa_socket.te \
     wpa.te
 
