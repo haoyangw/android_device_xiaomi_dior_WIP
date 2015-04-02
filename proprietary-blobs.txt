@@ -1,9 +1,11 @@
 # ADSP
 # Audio
 bin/adsprpcd
-bin/akmd
+# bin/akmd
+bin/qrngd
+bin/qrngp
 bin/btnvtool
-bin/charging
+# bin/charging
 bin/fmconfig
 bin/fm_qsoc_patches
 bin/hci_qcomm_init
@@ -22,6 +24,7 @@ bin/thermal-engine
 bin/time_daemon
 bin/netmgrd
 bin/qmuxd
+bin/tinymix
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsnetutils.so
@@ -45,7 +48,7 @@ bin/netmgrd
 bin/qmuxd
 bin/rild
 lib/libril.so
-lib/libxiaomi_rilhook.so
+# lib/libxiaomi_rilhook.so
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
 vendor/lib/libdsnetutils.so
@@ -74,7 +77,7 @@ etc/acdbdata/MTP/MTP_Handset_cal.acdb
 etc/acdbdata/MTP/MTP_Hdmi_cal.acdb
 etc/acdbdata/MTP/MTP_Headset_cal.acdb
 etc/acdbdata/MTP/MTP_Speaker_cal.acdb
-etc/Bluetooth_cal.acdb
+# etc/Bluetooth_cal.acdb
 etc/firmware/a225p5_pm4.fw
 etc/firmware/a225_pfp.fw
 etc/firmware/a225_pm4.fw
@@ -85,16 +88,16 @@ etc/firmware/a330_pm4.fw
 etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
-etc/firmware/hcheck.b00
-etc/firmware/hcheck.b01
-etc/firmware/hcheck.b02
-etc/firmware/hcheck.b03
-etc/firmware/hcheck.mdt
-etc/firmware/ILP0100_IPM_Code_out.bin
-etc/firmware/ILP0100_IPM_Data_out.bin
+# etc/firmware/hcheck.b00
+# etc/firmware/hcheck.b01
+# etc/firmware/hcheck.b02
+# etc/firmware/hcheck.b03
+# etc/firmware/hcheck.mdt
+# etc/firmware/ILP0100_IPM_Code_out.bin
+# etc/firmware/ILP0100_IPM_Data_out.bin
 etc/firmware/leia_pfp_470.fw
 etc/firmware/leia_pm4_470.fw
-etc/firmware/lscbuffer_rev2.bin
+# etc/firmware/lscbuffer_rev2.bin
 etc/firmware/venus.b00
 etc/firmware/venus.b01
 etc/firmware/venus.b02
@@ -111,72 +114,81 @@ etc/firmware/wcnss.b07
 etc/firmware/wcnss.b08
 etc/firmware/wcnss.b09
 etc/firmware/wcnss.mdt
-etc/General_cal.acdb
-etc/Global_cal.acdb
-etc/gps.conf
-etc/Handset_cal.acdb
-etc/Hdmi_cal.acdb
-etc/Headset_cal.acdb
-etc/Speaker_cal.acdb
-etc/tfa/fm.drc
-etc/tfa/fm.eq
-etc/tfa/fm_l.drc
-etc/tfa/fm_l.eq
-etc/tfa/fm_l.preset
-etc/tfa/fm.preset
-etc/tfa/playback.drc
-etc/tfa/playback.eq
-etc/tfa/playback_l.drc
-etc/tfa/playback_l.eq
-etc/tfa/playback_l.preset
-etc/tfa/playbackMFG.config
-etc/tfa/playbackMFG.drc
-etc/tfa/playbackMFG.eq
-etc/tfa/playbackMFG_l.config
-etc/tfa/playbackMFG_l.drc
-etc/tfa/playbackMFG_l.eq
-etc/tfa/playbackMFG_l.preset
-etc/tfa/playbackMFG.preset
-etc/tfa/playback.preset
-etc/tfa/playbackwoofer.drc
-etc/tfa/playbackwoofer.eq
-etc/tfa/playbackwoofer_l.drc
-etc/tfa/playbackwoofer_l.eq
-etc/tfa/playbackwoofer_l.preset
-etc/tfa/playbackwoofer.preset
-etc/tfa/Rec_Video.drc
-etc/tfa/Rec_Video.eq
-etc/tfa/Rec_Video_l.drc
-etc/tfa/Rec_Video_l.eq
-etc/tfa/Rec_Video_l.preset
-etc/tfa/Rec_Video.preset
-etc/tfa/tfa9895.config
-etc/tfa/tfa9895_l.speaker
-etc/tfa/tfa9895MFG.patch
-etc/tfa/tfa9895.patch
-etc/tfa/tfa9895.speaker
-etc/tfa/voice.drc
-etc/tfa/voice.eq
-etc/tfa/voice_l.drc
-etc/tfa/voice_l.eq
-etc/tfa/voice_l.preset
-etc/tfa/voice.preset
-etc/tfa/voiceWB.eq
-etc/tfa/voiceWB_l.eq
-etc/tfa/voip.drc
-etc/tfa/voip.eq
-etc/tfa/voip_l.drc
-etc/tfa/voip_l.eq
-etc/tfa/voip_l.preset
-etc/tfa/voip.preset
+# etc/General_cal.acdb
+# etc/Global_cal.acdb
+# etc/gps.conf
+# etc/Handset_cal.acdb
+# etc/Hdmi_cal.acdb
+# etc/Headset_cal.acdb
+# etc/Speaker_cal.acdb
+# etc/tfa/fm.drc
+# etc/tfa/fm.eq
+# etc/tfa/fm_l.drc
+# etc/tfa/fm_l.eq
+# etc/tfa/fm_l.preset
+# etc/tfa/fm.preset
+# etc/tfa/playback.drc
+# etc/tfa/playback.eq
+# etc/tfa/playback_l.drc
+# etc/tfa/playback_l.eq
+# etc/tfa/playback_l.preset
+# etc/tfa/playbackMFG.config
+# etc/tfa/playbackMFG.drc
+# etc/tfa/playbackMFG.eq
+# etc/tfa/playbackMFG_l.config
+# etc/tfa/playbackMFG_l.drc
+# etc/tfa/playbackMFG_l.eq
+# etc/tfa/playbackMFG_l.preset
+# etc/tfa/playbackMFG.preset
+# etc/tfa/playback.preset
+# etc/tfa/playbackwoofer.drc
+# etc/tfa/playbackwoofer.eq
+# etc/tfa/playbackwoofer_l.drc
+# etc/tfa/playbackwoofer_l.eq
+# etc/tfa/playbackwoofer_l.preset
+# etc/tfa/playbackwoofer.preset
+# etc/tfa/Rec_Video.drc
+# etc/tfa/Rec_Video.eq
+# etc/tfa/Rec_Video_l.drc
+# etc/tfa/Rec_Video_l.eq
+# etc/tfa/Rec_Video_l.preset
+# etc/tfa/Rec_Video.preset
+# etc/tfa/tfa9895.config
+# etc/tfa/tfa9895_l.speaker
+# etc/tfa/tfa9895MFG.patch
+# etc/tfa/tfa9895.patch
+# etc/tfa/tfa9895.speaker
+# etc/tfa/voice.drc
+# etc/tfa/voice.eq
+# etc/tfa/voice_l.drc
+# etc/tfa/voice_l.eq
+# etc/tfa/voice_l.preset
+# etc/tfa/voice.preset
+# etc/tfa/voiceWB.eq
+# etc/tfa/voiceWB_l.eq
+# etc/tfa/voip.drc
+# etc/tfa/voip.eq
+# etc/tfa/voip_l.drc
+# etc/tfa/voip_l.eq
+# etc/tfa/voip_l.preset
+# etc/tfa/voip.preset
+framework/qcom.fmradio.jar
 # GPS
 # Graphics
 # IRSC
 lib/hw/camera.msm8226.so
-lib/hw/camera.vendor.msm8226.so
+# lib/hw/camera.vendor.msm8226.so
+lib/hw/copybit.msm8226.so
 lib/hw/gps.default.so
-lib/hw/nfc_nci.msm8226.so
-lib/hw/sensors.msm8226.so
+lib/hw/gralloc.default.so
+lib/hw/gralloc.msm8226.so
+lib/hw/hwcomposer.msm8226.so
+lib/hw/keystore.default.so
+lib/hw/keystore.qcom.so
+lib/hw/lights.msm8226.so
+# lib/hw/nfc_nci.msm8226.so
+lib/hw/power.default.so
+# lib/hw/sensors.msm8226.so
 lib/libgps.utils.so
 lib/libloc_api_v02.so
 lib/libloc_core.so
@@ -185,11 +197,34 @@ lib/libloc_eng.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libmm-qcamera.so
+lib/libc2dcolorconvert.so
+lib/libdivxdrmdecrypt.so
+lib/libOmxCore.so
+lib/libOmxVdec.so
+lib/libOmxVenc.so
+lib/libOmxAacEnc.so
+lib/libOmxAmrEnc.so
+lib/libOmxEvrcEnc.so
+lib/libOmxQcelp13Enc.so
+lib/libstagefrighthw.so
+lib/libdashplayer.so
 lib/liboverlay.so
 lib/libqminvapi.so
 lib/libqomx_core.so
+lib/libqcomfm_jni.so
 lib/libril.so
-lib/libtime_genoff.so
+# lib/libtime_genoff.so
+lib/libxml2.so
+# lib/libgenlock.so
+# lib/libtilerenderer.so
+lib/hw/audio.a2dp.default.so
+lib/hw/audio_policy.msm8226.so
+lib/hw/audio.primary.msm8226.so
+lib/hw/audio.r_submix.default.so
+lib/hw/audio.usb.default.so
+lib/libaudio-resampler.so
+# lib/libqcompostprocbundle.so
+# lib/libqcomvisualizer.so
 lib/modules/ansi_cprng.ko
 lib/modules/dma_test.ko
 lib/modules/evbug.ko
@@ -224,17 +259,17 @@ lib/modules/test-iosched.ko
 # TrustZone
 vendor/etc/audio_effects.conf
 vendor/etc/diracmobile.config
-vendor/firmware/cmnlib.b00
-vendor/firmware/cmnlib.b01
-vendor/firmware/cmnlib.b02
-vendor/firmware/cmnlib.b03
-vendor/firmware/cmnlib.mdt
-vendor/firmware/keymaster/keymaster.b00
-vendor/firmware/keymaster/keymaster.b01
-vendor/firmware/keymaster/keymaster.b02
-vendor/firmware/keymaster/keymaster.b03
-vendor/firmware/keymaster/keymaster.mdt
-vendor/firmware/libpn547_fw.so
+# vendor/firmware/cmnlib.b00
+# vendor/firmware/cmnlib.b01
+# vendor/firmware/cmnlib.b02
+# vendor/firmware/cmnlib.b03
+# vendor/firmware/cmnlib.mdt
+# vendor/firmware/keymaster/keymaster.b00
+# vendor/firmware/keymaster/keymaster.b01
+# vendor/firmware/keymaster/keymaster.b02
+# vendor/firmware/keymaster/keymaster.b03
+# vendor/firmware/keymaster/keymaster.mdt
+# vendor/firmware/libpn547_fw.so
 vendor/lib/drm/libdrmprplugin.so
 vendor/lib/egl/eglsubAndroid.so
 vendor/lib/egl/libEGL_adreno.so
@@ -275,8 +310,8 @@ vendor/lib/libAKM8963.so
 vendor/lib/libalarmservice_jni.so
 vendor/lib/libaudcal.so
 vendor/lib/libaudioalsa.so
-vendor/lib/libawb_calibration.so
-vendor/lib/libBeautyChat.so
+# vendor/lib/libawb_calibration.so
+# vendor/lib/libBeautyChat.so
 vendor/lib/libbtnv.so
 vendor/lib/libbt-vendor.so
 vendor/lib/libC2D2.so
@@ -284,11 +319,11 @@ vendor/lib/libc2d2_z180.so
 vendor/lib/libc2d30-a3xx.so
 vendor/lib/libc2d30-a4xx.so
 vendor/lib/libc2d30.so
-vendor/lib/libcamera_aec.so
-vendor/lib/libcamera_af.so
-vendor/lib/libcamera_awb.so
-vendor/lib/libcameraface.so
-vendor/lib/libcamerapp.so
+# vendor/lib/libcamera_aec.so
+# vendor/lib/libcamera_af.so
+# vendor/lib/libcamera_awb.so
+# vendor/lib/libcameraface.so
+# vendor/lib/libcamerapp.so
 vendor/lib/libCB.so
 vendor/lib/libchromatix_imx132_common.so
 vendor/lib/libchromatix_imx132_default_video.so
@@ -315,14 +350,14 @@ vendor/lib/libchromatix_imx214_hfr_120.so
 vendor/lib/libchromatix_imx214_hfr_60.so
 vendor/lib/libchromatix_imx214_preview.so
 vendor/lib/libchromatix_imx214_snapshot.so
-vendor/lib/libchromatix_ov13850_common.so
-vendor/lib/libchromatix_ov13850_default_video.so
-vendor/lib/libchromatix_ov13850_hdr.so
-vendor/lib/libchromatix_ov13850_hfr_60fps.so
-vendor/lib/libchromatix_ov13850_hfr.so
-vendor/lib/libchromatix_ov13850_preview.so
-vendor/lib/libchromatix_ov13850_qtr.so
-vendor/lib/libchromatix_ov13850_zoe.so
+# vendor/lib/libchromatix_ov13850_common.so
+# vendor/lib/libchromatix_ov13850_default_video.so
+# vendor/lib/libchromatix_ov13850_hdr.so
+# vendor/lib/libchromatix_ov13850_hfr_60fps.so
+# vendor/lib/libchromatix_ov13850_hfr.so
+# vendor/lib/libchromatix_ov13850_preview.so
+# vendor/lib/libchromatix_ov13850_qtr.so
+# vendor/lib/libchromatix_ov13850_zoe.so
 vendor/lib/libchromatix_ov2720_common.so
 vendor/lib/libchromatix_ov2720_default_video.so
 vendor/lib/libchromatix_ov2720_hfr.so
@@ -389,11 +424,11 @@ vendor/lib/libchromatix_s5k3l2_q13s01b_default_video.so
 vendor/lib/libchromatix_s5k3l2_q13s01b_liveshot.so
 vendor/lib/libchromatix_s5k3l2_q13s01b_preview.so
 vendor/lib/libchromatix_s5k3l2_q13s01b_snapshot.so
-vendor/lib/libchromatix_s5k5e_onelane_common.so
-vendor/lib/libchromatix_s5k5e_onelane_default_video.so
-vendor/lib/libchromatix_s5k5e_onelane_hdr.so
-vendor/lib/libchromatix_s5k5e_onelane_preview.so
-vendor/lib/libchromatix_s5k5e_onelane_video_16_9.so
+# vendor/lib/libchromatix_s5k5e_onelane_common.so
+# vendor/lib/libchromatix_s5k5e_onelane_default_video.so
+# vendor/lib/libchromatix_s5k5e_onelane_hdr.so
+# vendor/lib/libchromatix_s5k5e_onelane_preview.so
+# vendor/lib/libchromatix_s5k5e_onelane_video_16_9.so
 vendor/lib/libchromatix_SKUAA_ST_gc0339_common.so
 vendor/lib/libchromatix_SKUAA_ST_gc0339_default_video.so
 vendor/lib/libchromatix_SKUAA_ST_gc0339_preview.so
@@ -495,10 +530,10 @@ vendor/lib/libmmcamera_imx132.so
 vendor/lib/libmmcamera_imx134.so
 vendor/lib/libmmcamera_imx135.so
 vendor/lib/libmmcamera_imx214.so
-vendor/lib/libmmcamera_interface.so
+# vendor/lib/libmmcamera_interface.so
 vendor/lib/libmmcamera_mt9m114.so
 vendor/lib/libmmcamera_ofilm_oty5f03_eeprom.so
-vendor/lib/libmmcamera_ov13850.so
+# vendor/lib/libmmcamera_ov13850.so
 vendor/lib/libmmcamera_ov2720.so
 vendor/lib/libmmcamera_ov5648_oty5f03.so
 vendor/lib/libmmcamera_ov5693_olq5f08.so
@@ -509,7 +544,7 @@ vendor/lib/libmmcamera_ov9724.so
 vendor/lib/libmmcamera_s5k3l1yx.so
 vendor/lib/libmmcamera_s5k3l2_omiba01.so
 vendor/lib/libmmcamera_s5k3l2_q13s01b.so
-vendor/lib/libmmcamera_s5k5e_onelane.so
+# vendor/lib/libmmcamera_s5k5e_onelane.so
 vendor/lib/libmmcamera_SKUAA_ST_gc0339.so
 vendor/lib/libmmcamera_skuab_shinetech_gc0339.so
 vendor/lib/libmmcamera_SKUAB_ST_s5k4e1.so
@@ -560,7 +595,7 @@ vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
 vendor/lib/libOpenCL.so
 vendor/lib/libOpenVG.so
-vendor/lib/libposteffect.so
+# vendor/lib/libposteffect.so
 vendor/lib/libprdrmdecrypt.so
 vendor/lib/libqcci_legacy.so
 vendor/lib/libqc-opt.so
@@ -574,7 +609,7 @@ vendor/lib/libqmi_csvt_srvc.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
 vendor/lib/libqmi.so
-vendor/lib/libqomx_core.so
+# vendor/lib/libqomx_core.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
 vendor/lib/libQSEEComAPI.so
@@ -609,29 +644,29 @@ vendor/lib/libthermalclient.so
 vendor/lib/libthermalioctl.so
 vendor/lib/libtime_genoff.so
 vendor/lib/libTimeService.so
-vendor/lib/libtuning_aec_ov13850_hdr_16_9.so
-vendor/lib/libtuning_aec_ov13850_hdr.so
-vendor/lib/libtuning_aec_ov13850_night_16_9.so
-vendor/lib/libtuning_aec_ov13850_night.so
-vendor/lib/libtuning_aec_ov13850_video_60fps.so
-vendor/lib/libtuning_aec_ov13850_videoHFR.so
-vendor/lib/libtuning_aec_ov13850_video.so
-vendor/lib/libtuning_aec_ov13850_zoe.so
-vendor/lib/libtuning_aec_ov13850_zsl_16_9.so
-vendor/lib/libtuning_aec_ov13850_zsl.so
-vendor/lib/libtuning_aec_s5k5e_onelane_hdr_16_9.so
-vendor/lib/libtuning_aec_s5k5e_onelane_hdr.so
-vendor/lib/libtuning_aec_s5k5e_onelane_video_16_9.so
-vendor/lib/libtuning_aec_s5k5e_onelane_video.so
-vendor/lib/libtuning_aec_s5k5e_onelane_zsl_16_9.so
-vendor/lib/libtuning_aec_s5k5e_onelane_zsl.so
-vendor/lib/libtuning_aec.so
-vendor/lib/libtuning_af_0.so
-vendor/lib/libtuning_af_1.so
-vendor/lib/libtuning_af_3.so
-vendor/lib/libtuning_af.so
-vendor/lib/libtuning_awb_ov13850.so
-vendor/lib/libtuning_awb_s5k5e_onelane.so
+# vendor/lib/libtuning_aec_ov13850_hdr_16_9.so
+# vendor/lib/libtuning_aec_ov13850_hdr.so
+# vendor/lib/libtuning_aec_ov13850_night_16_9.so
+# vendor/lib/libtuning_aec_ov13850_night.so
+# vendor/lib/libtuning_aec_ov13850_video_60fps.so
+# vendor/lib/libtuning_aec_ov13850_videoHFR.so
+# vendor/lib/libtuning_aec_ov13850_video.so
+# vendor/lib/libtuning_aec_ov13850_zoe.so
+# vendor/lib/libtuning_aec_ov13850_zsl_16_9.so
+# vendor/lib/libtuning_aec_ov13850_zsl.so
+# vendor/lib/libtuning_aec_s5k5e_onelane_hdr_16_9.so
+# vendor/lib/libtuning_aec_s5k5e_onelane_hdr.so
+# vendor/lib/libtuning_aec_s5k5e_onelane_video_16_9.so
+# vendor/lib/libtuning_aec_s5k5e_onelane_video.so
+# vendor/lib/libtuning_aec_s5k5e_onelane_zsl_16_9.so
+# vendor/lib/libtuning_aec_s5k5e_onelane_zsl.so
+# vendor/lib/libtuning_aec.so
+# vendor/lib/libtuning_af_0.so
+# vendor/lib/libtuning_af_1.so
+# vendor/lib/libtuning_af_3.so
+# vendor/lib/libtuning_af.so
+# vendor/lib/libtuning_awb_ov13850.so
+# vendor/lib/libtuning_awb_s5k5e_onelane.so
 vendor/lib/libtzdrmgenprov.so
 vendor/lib/libtzplayready.so
 vendor/lib/libulp2.so
@@ -651,7 +686,7 @@ vendor/lib/libwfduibcsrc.so
 vendor/lib/libwifiscanner.so
 vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L3.so
-vendor/lib/libxiaomicamera.so
+# vendor/lib/libxiaomicamera.so
 vendor/lib/libxml.so
 vendor/lib/libxtadapter.so
 vendor/lib/libxt_native.so
