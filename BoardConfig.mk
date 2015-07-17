@@ -1,7 +1,7 @@
-USE_CAMERA_STUB := true
+#USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/xiaomi/dior/AndroidBoardVendor.mk
+#-include vendor/xiaomi/dior/AndroidBoardVendor.mk
 
 TARGET_OTA_ASSERT_DEVICE := dior
 
@@ -65,17 +65,17 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/
 # QCOM HW
 BOARD_USES_QCOM_HARDWARE 	:= true
 USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY:= true
-#TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-#TARGET_QCOM_AUDIO_VARIANT := caf
-#TARGET_QCOM_DISPLAY_VARIANT := caf-new
-#TARGET_QCOM_MEDIA_VARIANT := caf-new
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+TARGET_QCOM_AUDIO_VARIANT := caf
+TARGET_QCOM_DISPLAY_VARIANT := caf-new
+TARGET_QCOM_MEDIA_VARIANT := caf-new
 #TARGET_USES_QCOM_BSP := true
 
 # Audio
 AUDIO_FEATURE_DISABLED_MULTI_VOICE_SESSIONS := true
 BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
-AUDIO_FEATURE_ENABLED_HWDEP_CAL := true
+#AUDIO_FEATURE_ENABLED_HWDEP_CAL := true
 AUDIO_FEATURE_ENABLED_LOW_LATENCY_CAPTURE := true
 AUDIO_FEATURE_ENABLED_FM := true
 BOARD_AUDIO_AMPLIFIER := device/xiaomi/dior/libaudioamp
@@ -89,6 +89,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/xiaomi/dior/bluetooth
 # Camera
 #COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{"xiaomi.camera.sensor.", AID_CAMERA, 0}, {"camera.4k2k.", AID_MEDIA, 0}, {"persist.camera.", AID_MEDIA, 0},'
 USE_DEVICE_SPECIFIC_CAMERA := true
+TARGET_SPECIFIC_HEADER_PATH := device/xiaomi/dior/include
 
 # Dex
 ifeq ($(HOST_OS),linux)
